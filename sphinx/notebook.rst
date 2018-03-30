@@ -1,6 +1,7 @@
-********************
-Tutorial Notebooks
-********************
+The following notebooks are available in the `shyft-doc <https://github.com/statkraft/shyft-doc>`_ repository.
+You can download and run these on your local computer, or browse through them here.
+
+.. _api-introduction:
 
 An introduction to the `api`
 ------------------------------------
@@ -11,6 +12,8 @@ It is recommended to go through these simple notebooks first, just to get a sens
 
     notebooks/api/api-intro
     notebooks/api/single_cell
+
+.. _config-introduction:
 
 Getting started with configured simulations
 ---------------------------------------------
@@ -24,9 +27,11 @@ own data.
     notebooks/nea-example/simulation-configured
     notebooks/nea-example/calibration-configured
 
+.. _advanced_tools:
+
 Some more advanced tools within Shyft
 --------------------------------------------
-The Shyft contains a lot of functionality. A few pieces are shown in the following notebooks.
+Shyft contains a lot of functionality. A few pieces are shown in the following notebooks.
 
 .. toctree::
     :maxdepth: 1
