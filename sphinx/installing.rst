@@ -72,9 +72,11 @@ If you are not planning on building Shyft, then the requirements are:
     - Windows: `ms c++ vs 2017 redist <https://go.microsoft.com/fwlink/?LinkId=746572>`_.
     - Linux: gcc-7 runtime libraries (e.g. libgcc)
 - Python >= 3.6
-- Python libraries:
-    - pyyaml
+- Python (minimum) libraries to access shyft-core-api, time-series, dtss:
     - numpy=1.13
+  
+- Python (maximum) libraries for remote-access data-sources, netcdf, demo and notebooks:
+    - pyyaml
     - netcdf4
     - gdal
     - matplotlib
@@ -85,7 +87,7 @@ If you are not planning on building Shyft, then the requirements are:
     - shapely
     - pyproj
     - jupyter
-    - pandas
+    
 
 NOTE: You do not need administrative or root permissions to install Shyft if you select a
 user-writable install location.
@@ -99,12 +101,13 @@ Significantly greater requirements exist if you intend to build the C++ core of 
 In addition to the :ref:`run-dependencies` there are some basic requirements which we
 leave to the user to be sure are met, as these are quite typical:
 
-* A C++11 compiler (gcc-6 or higher)
+* A C++11 compiler (linux - gcc-7 or higher, windows -Visual Studio 2017 with updates)
 * The BLAS and LAPACK libraries (development packages)
 * A Python 3 (3.6 or higher) interpreter
 * The NumPy package (>= 1.8.0)
 * The netCDF4 package (>= 1.2.1)
-* The CMake building tool (3.4 or higher)
+* The CMake building tool (3.8 or higher)
+* git
 
 In addition, a series of Python packages are needed mainly for running the tests. These
 can be easily installed via::
