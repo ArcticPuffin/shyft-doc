@@ -72,9 +72,11 @@ If you are not planning on building Shyft, then the requirements are:
     - Windows: `ms c++ vs 2017 redist <https://go.microsoft.com/fwlink/?LinkId=746572>`_.
     - Linux: gcc-7 runtime libraries (e.g. libgcc)
 - Python >= 3.6
-- Python libraries:
-    - pyyaml
+- Python (minimum) libraries to access shyft-core-api, time-series, dtss:
     - numpy=1.13
+  
+- Python (maximum) libraries for remote-access data-sources, netcdf, demo and notebooks:
+    - pyyaml
     - netcdf4
     - gdal
     - matplotlib
@@ -85,7 +87,7 @@ If you are not planning on building Shyft, then the requirements are:
     - shapely
     - pyproj
     - jupyter
-    - pandas
+    
 
 NOTE: You do not need administrative or root permissions to install Shyft if you select a
 user-writable install location.
@@ -99,39 +101,39 @@ Significantly greater requirements exist if you intend to build the C++ core of 
 In addition to the :ref:`run-dependencies` there are some basic requirements which we
 leave to the user to be sure are met, as these are quite typical:
 
-* A C++11 compiler (gcc-6 or higher)
+* A C++11 compiler (linux - gcc-7 or higher, windows -Visual Studio 2017 with updates)
 * The BLAS and LAPACK libraries (development packages)
 * A Python 3 (3.6 or higher) interpreter
 * The NumPy package (>= 1.8.0)
 * The netCDF4 package (>= 1.2.1)
-* The CMake building tool (3.4 or higher)
-
-In addition, a series of Python packages are needed mainly for running the tests. These
-can be easily installed via::
-
-    bash
-    $ pip install -r requirements.txt
-
-or, if you are using conda (see below)::
-
-    bash
-    $ cat requirements.txt | xargs conda install
-
-This should provide you with everything required from Python.
+* The CMake building tool (3.8 or higher)
+* git version control
 
 .. _build-dependencies:
+
+When shyft is checked out, the shyft/build_support directory contains build_dependencies.sh and win_build_dependencies.sh scripts that when executed, will download, compile and install all requirements locally into directory ~/projects/shyft_dependencies.
+
+The linux version also downloads and install miniconda into the ~/projects/miniconda directory. Similar for the windows-version, but on windows it's recommended to install miniconda/anaconda as a user/system maintained package.
+
+CMake support used for building will search the relative path ../shyft_dependencies and will thus find needed packages, libraries that is needed. To ease development, setting LD_LIBRARY_PATH to include ~/projects/shyft_dependencies/lib helps the loader locating boost, dlib, and armadillo libraries.
+
+On windows, we use system SHYFT_DEPENDENCIES environment variable to point to the shyft_dependencies, where all needed extra packages includes and libraries are located. To ease development and enable direct debugging in Visual studio, ensure to add %SHYFT_DEPENDENCIES%\lib to the PATH settings. Also ensure to set BOOST_PYTHONHOME env. variable to point to your miniconda/anaconda root directory.
+
+    git clone https://github.com/statkraft/shyft
+
+    bash shyft/build_support/build_dependencies.sh
+
+on windows:
+    
+    bash shyft/build_support/win_build_dependencies.h
+    
 
 External Libraries
 -------------------
 
 The Shyft C++ core utilizes several modern frameworks including: `dlib <http://dlib.net/>`_,
-`boost <http://www.boost.org/>`_, and `armadillo <http://arma.sourceforge.net/>`_. Lastly,
-you need to be sure you have installed the ``python-dev`` package and ``locate Python.h``
-returns the header file. If not, you'll need to be sure to point the ``LD_LIBRARY_PATH``
-set correctly.
+`boost <http://www.boost.org/>`_, and `armadillo <http://arma.sourceforge.net/>`_.
 
-Notice that the shyft/build_support/build_dependencies.sh provides a one-liner complete setup,
-including miniconda/python, dependencies build etc.
 
 Instructions on building these are provided in :ref:`dev-install`.
 
