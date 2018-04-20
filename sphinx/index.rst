@@ -34,8 +34,8 @@ Contents:
 
     installing
     getting_started
+    repositories
     orchestration
-    config_files
 
 
 Indices and tables

@@ -1,3 +1,5 @@
+.. _orchestration:
+
 *************************
 How Orchestration Works
 *************************
@@ -26,26 +28,6 @@ she can better adapt it to read her own data in any format she want.
         The repository and orchestration are undergoing a refactorization
         and some of the following may not be completely relevant or updated.
 
-
-
-Repositories
-===============
-
-Before to start, we need to introduce the concept of repository in
-Shyft.  A repository is just a collection of data in some arbitrary
-format, but in Shyft, it has the particular meaning of the **Python
-code** that can read this data and feed it to the Shyft core.
-
-The `Shyft.repository` package offers interfaces (via Python ABC
-classes) so that the user can provide concrete implementations of his
-own repositories.  In this approach users can provide their own
-repositories customized to their own configuration files (typically
-slight variations of the YAML config files that come with Shyft) and a
-diversity of data formats (maybe a whole collection of files,
-databases, etc.).  In addition, some concrete repositories are being
-distributed so that they can be used right away.  These concrete
-repositories can also be taken as an example of implementation for
-other user-defined repositories too.
 
 The `generic` repository
 --------------------------
