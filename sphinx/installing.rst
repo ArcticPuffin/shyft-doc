@@ -70,10 +70,11 @@ If you are not planning on building Shyft, then the requirements are:
 - 64-bit computer.
 - Windows or Linux.
     - Windows: `ms c++ vs 2017 redist <https://go.microsoft.com/fwlink/?LinkId=746572>`_.
-    - Linux: gcc-7 runtime libraries (e.g. libgcc)
+    - Linux: gcc-7 runtime libraries (e.g. libgcc), BLAS and LAPACK library runtimes
+    
 - Python >= 3.6
 - Python (minimum) libraries to access shyft-core-api, time-series, dtss:
-    - numpy=1.13
+    - numpy , compatible with the shyft build/dependency requrement, like numpy 1.13, 1.14
   
 - Python (maximum) libraries for remote-access data-sources, netcdf, demo and notebooks:
     - pyyaml
