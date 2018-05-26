@@ -146,7 +146,7 @@ Binary installation with the sigbjorn conda channel
 If are not yet familiar with Python, we recommend seeing the :ref:`python-install` documentation.
 The simplest way to get started, if you are familiar with conda is to use Sigbjorn's channel::
 
-    conda  create -c sigbjorn -c conda-forge -n shyft python=3.6 pyyaml numpy=1.13 netcdf4 gdal matplotlib requests nose coverage pip shapely pyproj jupyter pandas shyft scipy
+    conda  create -c sigbjorn -c conda-forge -n shyft python=3.6 pyyaml numpy netcdf4 gdal matplotlib requests nose coverage pip shapely pyproj jupyter pandas shyft scipy bokeh
 
 .. _releases:
 
