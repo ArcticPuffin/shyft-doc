@@ -136,7 +136,7 @@ shyft\_ws.sh: Script to establish a complete pre-built **s**\ hyft **w**\ ork\ *
         export PATH="$WORKSPACE/miniconda/bin:$PATH"
         conda config --set always_yes yes --set changeps1 no
         conda update conda
-        conda create -c conda-forge -c sigbjorn -n shyft shyft pyyaml numpy libgfortran netcdf4 gdal matplotlib requests nose coverage pip shapely jupyter pyproj pandas bokeh
+        conda create -c conda-forge -c sigbjorn -n shyft shyft pyyaml numpy libgfortran netcdf4 netcdftime gdal matplotlib requests nose coverage pip shapely jupyter pyproj pandas bokeh
     fi;
     echo .
     echo Done!
