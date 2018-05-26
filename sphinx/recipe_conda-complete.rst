@@ -65,7 +65,7 @@ This recipe takes about 15-30 minutes to complete if everything flows ok.
     start cmd-window (Win-R:cmd )::
 
         cmd C:\Miniconda3\Scripts\activate
-        conda create -c sigbjorn -c conda-forge -n shyft python=3.6 pyyaml numpy netcdf4 gdal matplotlib requests nose coverage pip shapely pyproj jupyter pandas shyft
+        conda create -c sigbjorn -c conda-forge -n shyft python=3.6 shyft pyyaml numpy netcdf4 gdal matplotlib requests nose coverage pip shapely pyproj jupyter pandas bokeh
 
 6. Use the newly created shyft -environment
 
@@ -84,10 +84,10 @@ This recipe takes about 15-30 minutes to complete if everything flows ok.
     The open-source free community version is Ok.
 
 
-Ubuntu 15.10 (x64)
+Ubuntu  (x64)
 =====================
 
-Preconditions for doing this is that you have an update Ubuntu 15.10
+Preconditions for doing this is that you have an update Ubuntu
 (x64) distro with a local user, having internet access so that the
 remaining component can be installed.
 
@@ -107,7 +107,7 @@ shyft\_ws.sh: Script to establish a complete pre-built **s**\ hyft **w**\ ork\ *
     # To use pycharm you also need java
     # sudo apt-get install openjdk-7-jre
     #
-    echo SHyFT installer for Ubuntu 15.10
+    echo SHyFT installer for Ubuntu 1Y.rr
     echo
     echo Notice that you need to have installed git, blas and lapack
     echo the command is
@@ -119,15 +119,6 @@ shyft\_ws.sh: Script to establish a complete pre-built **s**\ hyft **w**\ ork\ *
     unset PYTHONPATH
     cd $WORKSPACE
 
-    if [ -d shyft ]; then
-        # if we would like a floating distro, to like this
-        pushd shyft
-        git pull
-        popd
-    else
-        git clone https://github.com/statkraft/shyft
-    fi;
-
     if [ -d shyft-data ]; then
         pushd shyft-data
         git pull
@@ -135,9 +126,7 @@ shyft\_ws.sh: Script to establish a complete pre-built **s**\ hyft **w**\ ork\ *
     else
         git clone https://github.com/statkraft/shyft-data
     fi;
-    #works for Ubuntu 15.10, given that you have blas+lapack
-    echo Unzip latest distro for Ubuntu 15.10 into shyft
-    tar -xf shyft-data/distro/SK_2016_03_18_Ubuntu_15_10_np110py35.tar.gz
+    
 
     if [ ! -d miniconda ]; then
         if [ ! -f miniconda.sh ]; then
@@ -147,7 +136,7 @@ shyft\_ws.sh: Script to establish a complete pre-built **s**\ hyft **w**\ ork\ *
         export PATH="$WORKSPACE/miniconda/bin:$PATH"
         conda config --set always_yes yes --set changeps1 no
         conda update conda
-        conda create -n shyft_env pyyaml numpy libgfortran netcdf4 gdal matplotlib requests nose coverage pip shapely pyproj
+        conda create -c conda-forge -c sigbjorn -n shyft shyft pyyaml numpy libgfortran netcdf4 gdal matplotlib requests nose coverage pip shapely jupyter pyproj pandas bokeh
     fi;
     echo .
     echo Done!
@@ -163,10 +152,7 @@ workspace. You can source the script (source ./shyft\_env.sh)
     #!/bin/bash
     export WORKSPACE=~/sws
     export PATH="$WORKSPACE/miniconda/bin:$PATH"
-    source activate shyft_env
-    export PYTHONPATH=$WORKSPACE/shyft
-    echo LD_PRELOAD workaround for anaconda/ubuntu problem and GFORTRAN_4 problem applied
-    export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgfortran.so.3.0.0:/usr/lib/x86_64-linux-gnu/libgfortran.so.3
+    source activate shyft
     echo Ready for shyft-work
 
 Troubleshoothing
